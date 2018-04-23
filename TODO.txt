@@ -1,0 +1,5 @@
+Da sich die Änderung durch das Netzwerk von Gattern und Signalen propagieren soll,
+muss mit dem Erreichen eines neuen Ausgangssignals den folgenden Objekten mitgeteilt werden,
+dass sich das Signal geändert hat. Hierzu muss jedes Objekt wissen, welches Objekt direkt hinter ihm hängt.
+Da nur Gatter mitgeteilt bekommen, mit welchem Signal sie verbunden werden, muss im Zuge dieser Mitteilung
+die Information an die Signale weitergegeben werden.
