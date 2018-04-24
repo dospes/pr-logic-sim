@@ -4,10 +4,11 @@ public class Signal {
     boolean Value;
 //    Nand preSignal;
     int postSignalIndex = 0;
-    Nand[] postSignal = new Nand[4];
+    Nand[] postSignal;
 
     public Signal(String SignalName){
         Name = SignalName;
+        postSignal = new Nand[10];
     }
 
     public void setValue(boolean SignalValue){

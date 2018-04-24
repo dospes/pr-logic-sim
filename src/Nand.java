@@ -9,6 +9,7 @@ public class Nand {
     public Nand(int NandInputs){
         InputCount = NandInputs;
         InputSignal = new Signal[InputCount]; //Array mit Platz für 4 Signal-Objekte, Eingänge
+        InputSignalValue = new boolean[InputCount];
     }
 
     public void setInput(int n, Signal s){
