@@ -1,13 +1,14 @@
 public class Nand {
 
     int InputCount; //Anzahl der Inputs
-    Signal[] InputSignal = new Signal[4]; //Array mit Platz für 4 Signal-Objekte, Eingänge
+    Signal[] InputSignal;
     Signal OutputSignal; //Signal für Ausgang
     boolean[] InputSignalValue; //Array von boolean für die Inputsignale
     boolean output;
 
     public Nand(int NandInputs){
         InputCount = NandInputs;
+        InputSignal = new Signal[InputCount]; //Array mit Platz für 4 Signal-Objekte, Eingänge
     }
 
     public void setInput(int n, Signal s){
