@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Signal {
 
     /*
@@ -6,12 +8,11 @@ public class Signal {
 
     private String Name;
     private boolean Value;
-    private int postSignalIndex = 0;
-    private Nand[] postSignal;
+    private ArrayList<Nand> postSignal;
 
     public Signal(String SignalName){
         Name = SignalName;
-        postSignal = new Nand[10]; //TODO statt Array ArrayListe verwenden um diese dynamisch erweitern zu können
+        postSignal = new ArrayList<>();
     }
 
     /*
@@ -22,8 +23,8 @@ public class Signal {
 
     public void setValue(boolean SignalValue){
         Value = SignalValue;
-        for(int i = 0; i < postSignalIndex; i++){
-            postSignal[i].gatterMain();
+        for(int i = 0; i < postSignal.size(); i++){
+            postSignal.get(i).gatterMain();
         }
         if(Name.contains("s")){
             System.out.println(Name + " = " + Value);
@@ -40,7 +41,6 @@ public class Signal {
      */
 
     public void setPostSignal(Nand nand){
-        postSignal[postSignalIndex] = nand;
-        postSignalIndex++;
+        postSignal.add(nand);
     }
 }
