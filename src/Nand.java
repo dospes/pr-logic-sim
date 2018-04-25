@@ -12,7 +12,7 @@ public class Nand {
      * InputSignal und InputSignalValue werden auf die Anzahl der Inputs angepasst
      */
 
-    public Nand(int NandInputs){
+    public Nand(int NandInputs, int Delay){
         InputSignal = new Signal[NandInputs];
         InputSignalValue = new boolean[NandInputs];
     }
