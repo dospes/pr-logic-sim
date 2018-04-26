@@ -65,7 +65,7 @@ public class FunctionalSimulator {
 	// Inverter mit Ein- und Ausgängen verbinden.
 	// Die Methode setInput() des Gatters bekommt die Nummer des Eingangs
 	// und das Signal, mit dem dieser Eingang verbunden werden soll.
-	inv1.setInput(0,i1);
+ 	inv1.setInput(0,i1);
 	// Die Methode setOutput() bekommt nur ein Signal, welches durch diesen
 	// Ausgang bestimmt wird
 	inv1.setOutput(ni1);

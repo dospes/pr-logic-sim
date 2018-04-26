@@ -10,11 +10,13 @@ public class Nand {
 
     /*
      * InputSignal und InputSignalValue werden auf die Anzahl der Inputs angepasst
+     * Da in TimingSimulator mehrere Argumente weitergegeben werden, wird die Menge hier variabel gehalten
+     * i verhält sich wie ein Array
      */
 
-    public Nand(int NandInputs, int Delay){
-        InputSignal = new Signal[NandInputs];
-        InputSignalValue = new boolean[NandInputs];
+    public Nand(int... i){
+        InputSignal = new Signal[i[0]];
+        InputSignalValue = new boolean[i[0]];
     }
 
     /*
