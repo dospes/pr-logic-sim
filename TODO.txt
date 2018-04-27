@@ -22,3 +22,6 @@ berücksichtigt werden, das kann aber im nachhinein geschehen.
 Nand Blöcke können neue Events erstellen, welche in die EventQueue eingeordnet werden. So wird der Delay beachtet
 und es muss keine neue Funktion extra für den Delay verwendet werden. Die Events die erstellt werden müssen hierfür
 vor das nächste Event, das regulär stattfinden soll.
+
+Es ist sehr wichtig, dass die Events in chronologischer Reihenfolge in der Queue liegen, sonst funktioniert nichts
+wie es soll.

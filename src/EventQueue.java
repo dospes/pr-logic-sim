@@ -2,10 +2,12 @@ import java.util.ArrayList;
 
 public class EventQueue {
 
-    ArrayList<Event> EventList;
+    private ArrayList<Event> EventList;
+    private static Clock c;
 
     public EventQueue(){
         EventList = new ArrayList<>();
+        c = new Clock();
     }
 
     public void addEvent(Event e){
@@ -18,6 +20,10 @@ public class EventQueue {
 
     public Event getFirst(){
         return EventList.get(0);
+    }
+
+    public Clock getC(){
+        return c;
     }
 
 }

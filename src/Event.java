@@ -16,7 +16,20 @@ public class Event {
         currentEq = eq;
     }
 
+    public Signal getSignal(){
+        return Input;
+    }
+    public int getTime() {
+        return Time;
+    }
+
+    public boolean getNewValue() {
+        return newValue;
+    }
+
+
     public void propagate(){
-        Input.setValue(newValue);
+        Clock c = currentEq.getC();
+        c.clockMain(this);
     }
 }
