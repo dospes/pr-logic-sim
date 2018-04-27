@@ -26,9 +26,9 @@ public class Signal {
         for(int i = 0; i < postSignal.size(); i++){
             postSignal.get(i).gatterMain();
         }
-        if(Name.contains("s")){
-            System.out.println(Name + " = " + Value);
-        }
+//        if(Name.contains("s")){
+//            System.out.println(Name + " = " + Value);
+//        }
     }
 
     public boolean getValue(){

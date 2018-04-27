@@ -14,6 +14,14 @@ public class EventQueue {
         EventList.add(e);
     }
 
+    public void addDelayedEvent(int i, Event e) {
+        EventList.add(i, e);
+    }
+
+    public ArrayList<Event> getEventList(){
+        return EventList;
+    }
+
     public boolean hasMore(){
         return EventList.size() > 0;
     }

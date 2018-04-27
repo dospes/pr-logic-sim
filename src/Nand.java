@@ -7,6 +7,7 @@ public class Nand {
     private Signal[] InputSignal;
     private Signal OutputSignal;
     private boolean[] InputSignalValue;
+    private int Delay;
 
     /*
      * InputSignal und InputSignalValue werden auf die Anzahl der Inputs angepasst
@@ -17,6 +18,11 @@ public class Nand {
     public Nand(int... i){
         InputSignal = new Signal[i[0]];
         InputSignalValue = new boolean[i[0]];
+        if (i.length > 1) {
+            Delay = i[1];
+        } else {
+            Delay = 0;
+        }
     }
 
     /*
@@ -43,6 +49,10 @@ public class Nand {
         }
     }
 
+    private void makeOutputEvent(boolean Output) {
+        new Event(OutputSignal, Delay, Output, true);
+    }
+
     /*
      * Gatter-Output wird anhand aktualisierter Werte berechnet
      * Output wird an Signal weitergegeben
@@ -58,6 +68,10 @@ public class Nand {
                 break;
             }
         }
-        OutputSignal.setValue(Output);
+        if (Delay == 0) {
+            OutputSignal.setValue(Output);
+        } else {
+            this.makeOutputEvent(Output);
+        }
     }
 }

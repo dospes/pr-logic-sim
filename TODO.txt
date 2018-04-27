@@ -25,3 +25,5 @@ vor das nächste Event, das regulär stattfinden soll.
 
 Es ist sehr wichtig, dass die Events in chronologischer Reihenfolge in der Queue liegen, sonst funktioniert nichts
 wie es soll.
+
+Eine Klasse für das Logging der Outputs bzw jeglicher Daten sollte erstellt werden.
