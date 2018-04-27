@@ -1,9 +1,9 @@
 public class Event {
 
-    Signal Input;
-    int Time;
-    boolean newValue;
-    static EventQueue currentEq;
+    private Signal Input;
+    private int Time;
+    private boolean newValue;
+    private static EventQueue currentEq;
 
     public Event(Signal s, int t, boolean v){
         Input = s;

@@ -3,3 +3,22 @@ muss mit dem Erreichen eines neuen Ausgangssignals den folgenden Objekten mitget
 dass sich das Signal geändert hat. Hierzu muss jedes Objekt wissen, welches Objekt direkt hinter ihm hängt.
 Da nur Gatter mitgeteilt bekommen, mit welchem Signal sie verbunden werden, muss im Zuge dieser Mitteilung
 die Information an die Signale weitergegeben werden.
+
+Die Propagierung der Werte muss mit und ohne Delay passieren können,
+am besten wäre es beide über die gleiche Methode laufen zu lassen, dafür muss ein Argument festgelegt werden.
+Wenn ein Event ein Signal ändert, kann dieses Argument mitgegeben werden,
+dies wird dann an den Block weitergegeben, der entscheiden kann, ob ein Delay notwendig ist.
+
+Das Einbauen von Delays mittels TimeUnit.SECONDS.sleep() verzögert die gesamte Schaltung. Clock bauen die alles steuert?
+Counter für den Setup zerstört eventuell nicht Setup bedingte Durchläufe.
+Delay muss auf jeden Fall in Millisekunden und nicht Sekunden sein. Eigentlich handelt es sich eh eher um Zeitabschnitte,
+also Ticks. Eine Clock würde dieses Problem lösen, ist aber schwierig zu initialisieren, ohne in die vorgegebenen
+Klassen einzugreifen.
+
+Clock im ersten Event bauen, welche gespeichert wird. Alle weiteren Events werden an die Clock weitergegeben.
+Die Clock zählt die Zeit und gibt Signale an den richtigen Zeitpunkten weiter. Irgendwie muss der Delay der Nand Gatter
+berücksichtigt werden, das kann aber im nachhinein geschehen.
+
+Nand Blöcke können neue Events erstellen, welche in die EventQueue eingeordnet werden. So wird der Delay beachtet
+und es muss keine neue Funktion extra für den Delay verwendet werden. Die Events die erstellt werden müssen hierfür
+vor das nächste Event, das regulär stattfinden soll.
