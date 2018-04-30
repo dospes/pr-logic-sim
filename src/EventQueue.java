@@ -14,6 +14,10 @@ public class EventQueue {
         EventList.add(e);
     }
 
+    public void removeFirst(){
+        EventList.remove(0);
+    }
+
     public void addDelayedEvent(int i, Event e) {
         EventList.add(i, e);
     }

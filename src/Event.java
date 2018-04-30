@@ -34,7 +34,8 @@ public class Event {
         for (int i = 0; i < currentEventList.size(); i++) {
             Event e = currentEventList.get(i);
             if (Time <= e.Time) {
-                currentEq.addDelayedEvent(i-1, this);
+                currentEq.addDelayedEvent(i, this);
+                break;
             }
         }
     }
@@ -57,6 +58,7 @@ public class Event {
 
 
     public void propagate(){
+//        currentEq.removeFirst();
         clock.clockMain(this);
     }
 }

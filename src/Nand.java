@@ -87,8 +87,8 @@ public class Nand {
                 }
             }
             if (SetupCounter > 0) {
-                OutputSignal.setValue(Output);
                 SetupCounter--;
+                OutputSignal.setValue(Output);
             } else {
                 SetupComplete--;
                 if (SetupComplete > 0){

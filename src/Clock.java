@@ -15,7 +15,8 @@ public class Clock {
     }
 
     public void clockMain(Event e){
-        while (e.getTime() < MainTime) {
+        int EventTime = e.getTime();
+        while (EventTime > MainTime) {
             this.advance();
         }
         Signal s = e.getSignal();
