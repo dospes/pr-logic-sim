@@ -27,3 +27,6 @@ Es ist sehr wichtig, dass die Events in chronologischer Reihenfolge in der Queue
 wie es soll.
 
 Eine Klasse für das Logging der Outputs bzw jeglicher Daten sollte erstellt werden.
+
+Die ersten 20 Durchgänge der Gatter sollten verzögerungsfrei verlaufen, um das Einschwingen zu ermöglichen.
+Außerdem muss das Einschwingen abgebrochen werden.

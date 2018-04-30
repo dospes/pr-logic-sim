@@ -8,6 +8,8 @@ public class Nand {
     private Signal OutputSignal;
     private boolean[] InputSignalValue;
     private int Delay;
+    private static int SetupComplete;
+    private static int SetupCounter;
 
     /*
      * InputSignal und InputSignalValue werden auf die Anzahl der Inputs angepasst
@@ -23,6 +25,8 @@ public class Nand {
         } else {
             Delay = 0;
         }
+        SetupComplete = 2;
+        SetupCounter = 100;
     }
 
     /*
@@ -61,17 +65,36 @@ public class Nand {
 
     public void gatterMain(){
         boolean Output = false;
-        this.getInputValues();
-        for(int i = 0; i < InputSignalValue.length; i++){
-            if(!InputSignalValue[i]){
-                Output = true;
-                break;
+        if (SetupComplete == 0) {
+            this.getInputValues();
+            for (int i = 0; i < InputSignalValue.length; i++) {
+                if (!InputSignalValue[i]) {
+                    Output = true;
+                    break;
+                }
             }
-        }
-        if (Delay == 0) {
-            OutputSignal.setValue(Output);
+            if (Delay == 0) {
+                OutputSignal.setValue(Output);
+            } else {
+                this.makeOutputEvent(Output);
+            }
         } else {
-            this.makeOutputEvent(Output);
+            this.getInputValues();
+            for (int i = 0; i < InputSignalValue.length; i++) {
+                if (!InputSignalValue[i]) {
+                    Output = true;
+                    break;
+                }
+            }
+            if (SetupCounter > 0) {
+                OutputSignal.setValue(Output);
+                SetupCounter--;
+            } else {
+                SetupComplete--;
+                if (SetupComplete > 0){
+                    SetupCounter = 100;
+                }
+            }
         }
     }
 }
