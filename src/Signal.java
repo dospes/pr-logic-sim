@@ -50,4 +50,8 @@ public class Signal {
     public void setPostSignal(Nand nand){
         postSignal.add(nand);
     }
+
+    public String getName() {
+        return Name;
+    }
 }

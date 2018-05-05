@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * Klasse TimingSimulator ist ein Logiksimulator, der nur 
  * Nand-Gatter simulieren kann und Zeitverzögerungen berücksichtigt.
@@ -162,7 +164,12 @@ public class TimingSimulator {
 	    //System.out.println(e);
 	    e.propagate();
 	}
-    }
+		try { //TODO wieder entfernen und an geeigneter Stelle einfügen
+			Logger.dumpToCSV();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
     
     /**
      * Main Methode dieser Klasse. Sie müssen das im Moment noch nicht
