@@ -32,3 +32,5 @@ Die ersten 20 Durchgänge der Gatter sollten verzögerungsfrei verlaufen, um das
 Außerdem muss das Einschwingen abgebrochen werden.
 
 Es wird immer das gleiche Event erzeugt und damit ein OutOfMemory erzeugt. Wo ist die Endlosschleife?
+
+In logging/output ist irgendwo ein Endless Loop

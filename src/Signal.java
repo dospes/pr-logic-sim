@@ -9,10 +9,16 @@ public class Signal {
     private String Name;
     private boolean Value;
     private ArrayList<Nand> postSignal;
+    private static Logger Log;
 
     public Signal(String SignalName){
         Name = SignalName;
         postSignal = new ArrayList<>();
+        Log.addToLog(this);
+    }
+
+    public static void setLog(Logger log) {
+        Log = log;
     }
 
     /*
@@ -24,7 +30,8 @@ public class Signal {
     public void setValue(boolean SignalValue){
         Value = SignalValue;
         for(int i = 0; i < postSignal.size(); i++){
-            postSignal.get(i).gatterMain();
+            Nand TempNand = postSignal.get(i);
+            TempNand.gatterMain();
         }
 //        if(Name.contains("s")){
 //            System.out.println(Name + " = " + Value);

@@ -1,16 +1,22 @@
 public class Clock {
 
-    static int MainTime;
+    private static int MainTime;
+    private static Logger Log;
 
     public Clock(){
         MainTime = 0;
     }
 
-    public int getTime(){
+    public static void setLog(Logger log){
+        Log = log;
+    }
+
+    public static int getTime(){
         return MainTime;
     }
 
-    public void advance(){
+    private void advance(){
+        Log.addLogEntry();
         MainTime++;
     }
 

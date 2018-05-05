@@ -58,7 +58,7 @@ public class Event {
 
 
     public void propagate(){
-//        currentEq.removeFirst();
+        currentEq.removeFirst();
         clock.clockMain(this);
     }
 }
