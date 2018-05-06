@@ -15,10 +15,18 @@ public class Clock {
         return MainTime;
     }
 
+    /*
+     * Vor jedem Zeitschritt wird das Log aktualisiert.
+     */
+
     private void advance(){
         Log.addLogEntry();
         MainTime++;
     }
+
+    /*
+     * Es werden Zeitschritte durchgeführt, bis das aktuelle Event ausgeführt werden muss.
+     */
 
     public void clockMain(Event e){
         int EventTime = e.getTime();
@@ -26,7 +34,6 @@ public class Clock {
             this.advance();
         }
         Signal s = e.getSignal();
-        boolean v = e.getNewValue();
-        s.setValue(v);
+        s.setValue(e.getNewValue());
     }
 }

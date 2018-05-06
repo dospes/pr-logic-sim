@@ -8,6 +8,10 @@ public class Logger {
     private static ArrayList<boolean[]> Log;
     private static ArrayList<Signal> Signals;
 
+    /*
+     * Signal und Clock Klassen werden mit dem Logger verbunden
+     */
+
     public Logger(){
         Log = new ArrayList<>();
         Signals = new ArrayList<>();
@@ -19,6 +23,10 @@ public class Logger {
         Signals.add(s);
     }
 
+    /*
+     * Werte sämtlicher Signale werden in Array gespeichert und in den Log eingefügt
+     */
+
     public void addLogEntry(){
         boolean[] Values = new boolean[Signals.size()];
         for (int i = 0; i < Signals.size(); i++){
@@ -26,15 +34,12 @@ public class Logger {
             Values[i] = s.getValue();
         }
         Log.add(Values);
-
-//        if(Clock.getTime() == 180){ //TODO so schreiben, dass nicht vor Programmende bekannt sein muss, wann es endet
-//            try {
-//                this.dumpToCSV();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
+
+    /*
+     * Schreibt alle Werte als 1 oder 0 (true/false) mit "," als Seperator in ein String,
+     * der als CSV gespeichert wird.
+     */
 
     public static void dumpToCSV() throws IOException {
         BufferedWriter br = new BufferedWriter(new FileWriter("output.csv"));

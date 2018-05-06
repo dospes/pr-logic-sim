@@ -4,12 +4,12 @@ public class EventQueue {
 
     private ArrayList<Event> EventList;
     private static Clock c;
-    private static Logger Log;
+
 
     public EventQueue(){
         EventList = new ArrayList<>();
         c = new Clock();
-        Log = new Logger();
+        new Logger();
     }
 
     public void addEvent(Event e){

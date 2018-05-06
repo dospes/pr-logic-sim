@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Event {
@@ -29,7 +30,7 @@ public class Event {
     public Event(Signal s, int t, boolean v, boolean temp) {
         ArrayList<Event> currentEventList = currentEq.getEventList();
         Input = s;
-        Time = t + clock.getTime();
+        Time = t + Clock.getTime();
         newValue = v;
         for (int i = 0; i < currentEventList.size(); i++) {
             Event e = currentEventList.get(i);
@@ -57,8 +58,21 @@ public class Event {
     }
 
 
+    /*
+     * Event wird aus der Queue entfernt damit es nicht wiederholt aufgerufen werden kann.
+     * Die Ausführung des Events wird dann von der Clock übernommen.
+     */
+
     public void propagate(){
         currentEq.removeFirst();
         clock.clockMain(this);
+        if (!currentEq.hasMore()) {
+            try {
+                Logger.dumpToCSV();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("output.csv konnte nicht geschrieben werden.");
+            }
+        }
     }
 }

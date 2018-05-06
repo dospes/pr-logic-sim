@@ -164,11 +164,6 @@ public class TimingSimulator {
 	    //System.out.println(e);
 	    e.propagate();
 	}
-		try { //TODO wieder entfernen und an geeigneter Stelle einfügen
-			Logger.dumpToCSV();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
     
     /**
