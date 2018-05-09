@@ -1,6 +1,6 @@
-public class Nand extends Gatter {
+public class Or extends Gatter {
 
-    public Nand(int... i){
+    public Or(int... i){
         InputSignal = new Signal[i[0]];
         InputSignalValue = new boolean[i[0]];
         if (i.length > 1) {
@@ -10,14 +10,15 @@ public class Nand extends Gatter {
         }
     }
 
-    private boolean calcOutput(){
+    public boolean calcOutput(){
         boolean o = false;
-        for (boolean Value : InputSignalValue) {
-            if (!Value) {
+        for (boolean b : InputSignalValue){
+            if (b){
                 o = true;
                 break;
             }
         }
         return o;
     }
+
 }

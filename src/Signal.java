@@ -8,7 +8,7 @@ public class Signal {
 
     private String Name;
     private boolean Value;
-    private ArrayList<Nand> postSignal;
+    private ArrayList<Gatter> postSignal;
     private static Logger Log;
 
     public Signal(String SignalName){
@@ -29,9 +29,8 @@ public class Signal {
 
     public void setValue(boolean SignalValue){
         Value = SignalValue;
-        for(int i = 0; i < postSignal.size(); i++){
-            Nand TempNand = postSignal.get(i);
-            TempNand.gatterMain();
+        for (Gatter g : postSignal) {
+            g.gatterMain();
         }
 //        if(Name.contains("s")){
 //            System.out.println(Name + " = " + Value);
@@ -47,8 +46,8 @@ public class Signal {
      * Index wird erhöht, um überschreiben zu verhindern
      */
 
-    public void setPostSignal(Nand nand){
-        postSignal.add(nand);
+    public void setPostSignal(Gatter gatter){
+        postSignal.add(gatter);
     }
 
     public String getName() {
