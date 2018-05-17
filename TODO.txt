@@ -34,3 +34,9 @@ Außerdem muss das Einschwingen abgebrochen werden.
 Es wird immer das gleiche Event erzeugt und damit ein OutOfMemory erzeugt. Wo ist die Endlosschleife?
 
 In logging/output ist irgendwo ein Endless Loop
+
+Aufgabe 2 funktionierte nicht, da keine Events nach dem letzten Event geschrieben werden konnten.
+Nachdem dies behoben wurde, kommt es zu Endlosschleifen am Ende des Programs, außerdem ändert sich nQ, was nicht sein sollte.
+Um dies zu beheben wurde eingeführt, dass ein Signal von einem Nand nur weitergegeben wird, sollte es sich um
+ein anderes Signal als das vorherige Handeln. Jetzt kommt es zu falschen Ergebnissen. Eventuell sollte die Entscheidung
+zur Weitergabe vom Signal selbst getroffen werden, da dies keine Verzögerungen hat.

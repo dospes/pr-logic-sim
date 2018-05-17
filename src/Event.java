@@ -32,12 +32,17 @@ public class Event {
         Input = s;
         Time = t + Clock.getTime();
         newValue = v;
+        boolean flag = false;
         for (int i = 0; i < currentEventList.size(); i++) {
             Event e = currentEventList.get(i);
             if (Time <= e.Time) {
                 currentEq.addDelayedEvent(i, this);
+                flag = true;
                 break;
             }
+        }
+        if (!flag) {
+            currentEq.addDelayedEvent(currentEventList.size(), this);
         }
     }
 
