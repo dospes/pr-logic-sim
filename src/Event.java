@@ -67,6 +67,7 @@ public class Event {
         currentEq.removeFirst();
         clock.clockMain(this);
         if (!currentEq.hasMore()) {
+            Logger.addLogEntry();
             try {
                 Logger.dumpToCSV();
             } catch (IOException e) {

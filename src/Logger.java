@@ -27,7 +27,7 @@ public class Logger {
      * Werte sämtlicher Signale werden in Array gespeichert und in den Log eingefügt
      */
 
-    public void addLogEntry(){
+    public static void addLogEntry(){
         boolean[] Values = new boolean[Signals.size()];
         for (int i = 0; i < Signals.size(); i++){
             Signal s = Signals.get(i);

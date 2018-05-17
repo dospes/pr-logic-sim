@@ -10,7 +10,7 @@ public class Nand extends Gatter {
         }
     }
 
-    private boolean calcOutput(){
+    public boolean calcOutput(){
         boolean o = false;
         for (boolean Value : InputSignalValue) {
             if (!Value) {

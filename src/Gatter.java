@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
 public class Gatter {
 
     /*
@@ -8,7 +11,7 @@ public class Gatter {
     protected Signal OutputSignal;
     protected boolean[] InputSignalValue;
     protected int Delay;
-    protected static int SetupComplete;
+    protected static boolean SetupFlag;
     protected static int SetupCounter;
 
     /*
@@ -17,9 +20,7 @@ public class Gatter {
      * i verhält sich wie ein Array
      */
 
-    public Gatter(int... i){
-        SetupComplete = 2;
-        SetupCounter = 100;
+    public Gatter(){
     }
 
     /*
@@ -40,13 +41,13 @@ public class Gatter {
      * InputSignalValue wird aktualisiert
      */
 
-    private void getInputValues(){
+    protected void getInputValues(){
         for(int i = 0; i < InputSignal.length; i++){
             InputSignalValue[i] = InputSignal[i].getValue();
         }
     }
 
-    private void makeOutputEvent(boolean Output) {
+    protected void makeOutputEvent(boolean Output) {
         new Event(OutputSignal, Delay, Output, true);
     }
 
@@ -56,13 +57,29 @@ public class Gatter {
      * "!" bedeutet Negation
      */
 
-    private boolean calcOutput(){
+    protected boolean calcOutput(){
         return false;
+    }
+
+    protected void checkForSetup(){
+        ArrayList<String> Methods = new ArrayList<String>();
+        for (StackTraceElement e : Thread.currentThread().getStackTrace()){
+            Methods.add(e.getMethodName());
+        }
+        for (String s : Methods) {
+            if (Pattern.compile(Pattern.quote("steady"), Pattern.CASE_INSENSITIVE).matcher(s).find()){
+                if (!SetupFlag){
+                    SetupCounter = 300;
+                }
+                SetupFlag = true;
+            }
+        }
     }
 
     public void gatterMain(){
         boolean Output;
-        if (SetupComplete == 0) {
+        this.checkForSetup();
+        if (!SetupFlag) {
             this.getInputValues();
             Output = this.calcOutput();
             if (Delay == 0) {
@@ -77,10 +94,7 @@ public class Gatter {
                 SetupCounter--;
                 OutputSignal.setValue(Output);
             } else {
-                SetupComplete--;
-                if (SetupComplete > 0){
-                    SetupCounter = 100;
-                }
+                SetupFlag = false;
             }
         }
     }

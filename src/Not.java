@@ -6,7 +6,7 @@ public class Not extends Gatter {
         Delay = i;
     }
 
-    private boolean calcOutput() {
+    public boolean calcOutput() {
         boolean o;
         o = !InputSignalValue[0];
         return o;
