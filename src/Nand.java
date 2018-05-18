@@ -10,7 +10,6 @@ public class Nand {
     private int Delay;
     private static int SetupComplete;
     private static int SetupCounter;
-    private Boolean prevOutput;
 
     /*
      * InputSignal und InputSignalValue werden auf die Anzahl der Inputs angepasst
@@ -74,24 +73,10 @@ public class Nand {
                     break;
                 }
             }
-
-            if (prevOutput == null){
-                prevOutput = Output;
-                if (Delay == 0) {
-                    OutputSignal.setValue(Output);
-                } else {
-                    this.makeOutputEvent(Output);
-                }
-                return;
-            }
-
-            if (prevOutput != Output) {
-                prevOutput = Output;
-                if (Delay == 0) {
-                    OutputSignal.setValue(Output);
-                } else {
-                    this.makeOutputEvent(Output);
-                }
+            if (Delay == 0) {
+                OutputSignal.setValue(Output);
+            } else {
+                this.makeOutputEvent(Output);
             }
         } else {
             this.getInputValues();

@@ -8,6 +8,7 @@ public class Signal {
 
     private String Name;
     private boolean Value;
+    private Boolean prevValue;
     private ArrayList<Nand> postSignal;
     private static Logger Log;
 
@@ -29,13 +30,19 @@ public class Signal {
 
     public void setValue(boolean SignalValue){
         Value = SignalValue;
-        for(int i = 0; i < postSignal.size(); i++){
-            Nand TempNand = postSignal.get(i);
-            TempNand.gatterMain();
+        if (prevValue == null){
+            for(int i = 0; i < postSignal.size(); i++){
+                postSignal.get(i).gatterMain();
+            }
+            prevValue = Value;
+            return;
         }
-//        if(Name.contains("s")){
-//            System.out.println(Name + " = " + Value);
-//        }
+        if (prevValue != Value) {
+            for (int i = 0; i < postSignal.size(); i++) {
+                postSignal.get(i).gatterMain();
+            }
+            prevValue = Value;
+        }
     }
 
     public boolean getValue(){
