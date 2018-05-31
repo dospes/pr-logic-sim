@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Clock {
 
     private static int MainTime;
@@ -28,12 +30,12 @@ public class Clock {
      * Es werden Zeitschritte durchgeführt, bis das aktuelle Event ausgeführt werden muss.
      */
 
-    public void clockMain(Event e){
+    public void clockMain(Event e, ArrayList<Event> Overlap){
         int EventTime = e.getTime();
         while (EventTime > MainTime) {
             this.advance();
         }
         Signal s = e.getSignal();
-        s.setValue(e.getNewValue());
+        s.setValue(e.getNewValue(), Overlap);
     }
 }
