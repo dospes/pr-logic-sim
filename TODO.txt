@@ -41,11 +41,19 @@ Um dies zu beheben wurde eingeführt, dass ein Signal von einem Nand nur weiterg
 ein anderes Signal als das vorherige Handeln. Jetzt kommt es zu falschen Ergebnissen. Eventuell sollte die Entscheidung
 zur Weitergabe vom Signal selbst getroffen werden, da dies keine Verzögerungen hat.
 
-Am Zeitpunkt 35 kommt es zu dem Problem, dass sich 2 Signale ändern. Da das Weiterreichen der Werte nicht auf den
-Wert wartet, der eigentlich zum gleichen Zeitpunkt geändert werden. Eine mögliche Lösung wäre zu überprüfen,
+Am Zeitpunkt 35 kommt es zu dem Problem, dass sich 2 Signale ändern. Das Weiterreichen der Werte wartet nicht auf den
+Wert, der eigentlich zum gleichen Zeitpunkt geändert wird. Eine mögliche Lösung wäre zu überprüfen,
 ob es Events mit dem gleichen Zeitpunkt gibt, und diese alle erst zu ändern, und die Werte dann propagieren zu lassen.
 Es ist fraglich, ob es genügt, nur das letzte Signal propagieren zu lassen, da die Gatter hinter den anderen Signalen
 nicht unbedingt durch das letzte Signal angeregt werden, die neuen Signalwerte zu laden.
 Es ist zu untersuche, welches Signal Priorität erhalten muss, damit das Weiterreichen der Werte korrekt abläuft.
 Mögliche Kriterien sind die Anzahl an folgenden Gattern und ob ein folgendes Gatter von einem Signal gespeist wird,
 welches auch geändert wird.
+
+Werden zwei Signale zum gleichen Zeitpunkt geändert, die in einem nachfolgenden Gatter übereinstimmen, müssen erst beide
+Werte geändert werden, bevor das Gatter aktiviert werden darf. Gilt dies nur für Gatter direkt hinter dem Signal oder
+auch für weiter "hinten" hängende Gatter?
+
+Was wenn mehrere (mehr als 2) Signale zur gleichen Zeit geändert werden?
+
+Overlap Signal-Events löschen?

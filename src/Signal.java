@@ -22,6 +22,11 @@ public class Signal {
         Log = log;
     }
 
+
+    public ArrayList<Nand> getPostSignal() {
+        return postSignal;
+    }
+
     /*
      * Wert wird aktualisiert
      * Nachfolgende Nand-Gatter werden angeregt zu aktualisieren
@@ -30,6 +35,10 @@ public class Signal {
 
     public void setValue(boolean SignalValue){
         Value = SignalValue;
+        SignalProp();
+    }
+
+    public void SignalProp(){
         if (prevValue == null){
             for(int i = 0; i < postSignal.size(); i++){
                 postSignal.get(i).gatterMain();
@@ -38,11 +47,27 @@ public class Signal {
             return;
         }
         if (prevValue != Value) {
-            for (int i = 0; i < postSignal.size(); i++) {
+            for(int i = 0; i < postSignal.size(); i++){
                 postSignal.get(i).gatterMain();
             }
             prevValue = Value;
         }
+    }
+
+    public void setValue(boolean SignalValue, ArrayList<Event> Overlap){
+        Value = SignalValue;
+        if (Overlap == null){
+            SignalProp();
+        } else {
+            for (int i = 0; i < Overlap.size(); i++){
+                Overlap.get(i).getSignal().setValueNoProp(Overlap.get(i).getNewValue());
+            }
+            SignalProp();
+        }
+    }
+
+    public void setValueNoProp(boolean SignalValue){
+        Value = SignalValue;
     }
 
     public boolean getValue(){

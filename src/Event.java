@@ -62,6 +62,29 @@ public class Event {
         return newValue;
     }
 
+    private ArrayList<Event> checkForMultiples(){
+        ArrayList<Event> GatterOverlapEvents = new ArrayList<>();
+        ArrayList<Event> currentEventList = currentEq.getEventList();
+        for (int i = 0; i < currentEventList.size(); i++){
+            if (this.getTime() == currentEventList.get(i).getTime()){
+                for (int j = 0; j < this.getSignal().getPostSignal().size(); j++){
+                    for (int k = 0; k < currentEventList.get(i).getSignal().getPostSignal().size(); k++){
+                        if (this.getSignal().getPostSignal().get(j) == currentEventList.get(i).getSignal().getPostSignal().get(k)){
+                            GatterOverlapEvents.add(currentEventList.get(i));
+                        }
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < GatterOverlapEvents.size(); i++){
+            if (this == GatterOverlapEvents.get(i)){
+                GatterOverlapEvents.remove(i);
+                break;
+            }
+        }
+        return GatterOverlapEvents;
+    }
+
 
     /*
      * Event wird aus der Queue entfernt damit es nicht wiederholt aufgerufen werden kann.
@@ -69,8 +92,9 @@ public class Event {
      */
 
     public void propagate(){
+        ArrayList<Event> GatterOverlapEvents = this.checkForMultiples();
         currentEq.removeFirst();
-        clock.clockMain(this);
+        clock.clockMain(this, GatterOverlapEvents);
         if (!currentEq.hasMore()) {
             try {
                 Logger.dumpToCSV();
