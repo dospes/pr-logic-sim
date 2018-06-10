@@ -46,19 +46,17 @@ public class Logger {
         StringBuilder sb = new StringBuilder();
         int SignalCount = Signals.size();
 
-        for (int i = 0; i < SignalCount; i++){
-            sb.append(Signals.get(i).getName());
+        for (Signal s : Signals) {
+            sb.append(s.getName());
             sb.append(',');
         }
         sb.setLength(sb.length() - 1);
         br.write(sb.toString());
         br.newLine();
         sb.setLength(0);
-        for (int i = 0; i < Log.size(); i++){
-            boolean[] LogEntry = Log.get(i);
-            for (int j = 0; j < SignalCount; j++){
-                boolean tempValue = LogEntry[j];
-                if (tempValue){
+        for (boolean[] LogEntry : Log) {
+            for (int j = 0; j < SignalCount; j++) {
+                if (LogEntry[j]) {
                     sb.append('1');
                 } else {
                     sb.append('0');

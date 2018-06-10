@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class Signal {
 
@@ -38,17 +39,30 @@ public class Signal {
         SignalProp();
     }
 
-    public void SignalProp(){
-        if (prevValue == null){
-            for(int i = 0; i < postSignal.size(); i++){
-                postSignal.get(i).gatterMain();
+    private boolean inSetup(){
+        ArrayList<String> Methods = new ArrayList<String>();
+        for (StackTraceElement e : Thread.currentThread().getStackTrace()){
+            Methods.add(e.getMethodName());
+        }
+        for (String s : Methods) {
+            if (Pattern.compile(Pattern.quote("steady"), Pattern.CASE_INSENSITIVE).matcher(s).find()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void SignalProp(){
+        if (prevValue == null) {
+            for (Gatter g : postSignal) {
+                g.gatterMain();
             }
             prevValue = Value;
             return;
         }
         if (prevValue != Value) {
-            for(int i = 0; i < postSignal.size(); i++){
-                postSignal.get(i).gatterMain();
+            for (Gatter g : postSignal) {
+                g.gatterMain();
             }
             prevValue = Value;
         }
@@ -59,14 +73,14 @@ public class Signal {
         if (Overlap == null){
             SignalProp();
         } else {
-            for (int i = 0; i < Overlap.size(); i++){
-                Overlap.get(i).getSignal().setValueNoProp(Overlap.get(i).getNewValue());
+            for (Event e : Overlap) {
+                e.getSignal().setValueNoProp(e.getNewValue());
             }
             SignalProp();
         }
     }
 
-    public void setValueNoProp(boolean SignalValue){
+    private void setValueNoProp(boolean SignalValue){
         Value = SignalValue;
     }
 

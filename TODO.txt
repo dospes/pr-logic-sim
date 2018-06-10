@@ -57,3 +57,20 @@ auch für weiter "hinten" hängende Gatter?
 Was wenn mehrere (mehr als 2) Signale zur gleichen Zeit geändert werden?
 
 Overlap Signal-Events löschen?
+
+Bei Inheritance werden die Methoden der Superklasse nicht aufgerufen oder können nicht aufgerufen werden. Woran liegt das?
+
+Events müssen nicht in zeitlicher Reihenfolge in die EventQueue eingetragen werden, somit muss die EventQueue nach dem
+Setup geordnet werden.
+
+Die erste Signaländerung in A3_2 wird direkt weitergegeben, es gibt kein Delay. Ursache?
+Die Signaländerung findet nach MainTime == 5 statt, es gibt kein Event, welche die Änderung verursacht. Es gibt viele
+Events mit Time == 5, woher kommen diese Events?
+
+Out0 wird nicht bei t=73 geändert.
+nReset ist anfangs 0 und nicht 1.
+Es könnte sein, das beim Einschwingen nur eine der 4 Untergruppen des Zählwerks schwingen, da es einen Feedbackloop gibt.
+Vielleicht eine Funktion einfügen, die überprüft, ob sämtliche Gatter eingeschwungen sind. Es muss trotzdem erreicht werden,
+dass der Feedbackloop gebrochen wird, da sonst nie alle Gatter erreicht werden.
+Man kann beim Einschwingen beachten, wie viele Gatter direkt vom ersten Signal betroffen sind, und dann darüber sicherstellen,
+dass alle angeregt werden. Vielleicht hierüber jedem eine Einschwingperiode einräumen.

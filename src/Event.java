@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Event {
+public class Event implements Comparable<Event> {
 
     private Signal Input;
     private int Time;
@@ -42,8 +42,12 @@ public class Event {
             }
         }
         if (!flag) {
-            currentEq.addDelayedEvent(currentEventList.size(), this);
+            currentEq.addDelayedEvent(this);
         }
+    }
+
+    public int compareTo(final Event e){
+        return Integer.compare(this.Time, e.Time);
     }
 
     public static void setEventQueue(EventQueue eq){

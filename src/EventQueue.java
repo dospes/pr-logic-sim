@@ -1,15 +1,18 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class EventQueue {
+public class EventQueue{
 
     private ArrayList<Event> EventList;
     private static Clock c;
+    private static boolean setupFlag;
 
 
     public EventQueue(){
         EventList = new ArrayList<>();
         c = new Clock();
         new Logger();
+        setupFlag = false;
     }
 
     public void addEvent(Event e){
@@ -24,11 +27,22 @@ public class EventQueue {
         EventList.add(i, e);
     }
 
+    public void addDelayedEvent(Event e){
+        EventList.add(e);
+    }
+
     public ArrayList<Event> getEventList(){
         return EventList;
     }
 
+    private void sortByTime(){
+        Collections.sort(EventList);
+    }
+
     public boolean hasMore(){
+        if (!setupFlag){
+            sortByTime();
+        }
         return EventList.size() > 0;
     }
 

@@ -72,29 +72,29 @@ public class Gatter {
                     SetupCounter = 300;
                 }
                 SetupFlag = true;
+                return;
             }
         }
+        SetupFlag = false;
     }
 
     public void gatterMain(){
         boolean Output;
-        this.checkForSetup();
+        checkForSetup();
         if (!SetupFlag) {
-            this.getInputValues();
-            Output = this.calcOutput();
+            getInputValues();
+            Output = calcOutput();
             if (Delay == 0) {
                 OutputSignal.setValue(Output);
             } else {
-                this.makeOutputEvent(Output);
+                makeOutputEvent(Output);
             }
         } else {
-            this.getInputValues();
-            Output = this.calcOutput();
+            getInputValues();
+            Output = calcOutput();
             if (SetupCounter > 0) {
                 SetupCounter--;
                 OutputSignal.setValue(Output);
-            } else {
-                SetupFlag = false;
             }
         }
     }
