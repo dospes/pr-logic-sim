@@ -11,14 +11,11 @@ public class And extends Gatter {
     }
 
     public boolean calcOutput(){
-        boolean o = true;
-        for (int i = 0; i < InputSignal.length - 1; i++){
-            if (InputSignalValue[i] != InputSignalValue[i+1]){
-                o = false;
-                break;
+        for(Boolean b : InputSignalValue){
+            if (!b){
+                return false;
             }
         }
-        return o;
+        return true;
     }
-
 }

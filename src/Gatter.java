@@ -12,7 +12,7 @@ public class Gatter {
     protected boolean[] InputSignalValue;
     protected int Delay;
     protected static boolean SetupFlag;
-    protected static int SetupCounter;
+    protected static boolean SetupComplete;
 
     /*
      * InputSignal und InputSignalValue werden auf die Anzahl der Inputs angepasst
@@ -69,13 +69,14 @@ public class Gatter {
         for (String s : Methods) {
             if (Pattern.compile(Pattern.quote("steady"), Pattern.CASE_INSENSITIVE).matcher(s).find()){
                 if (!SetupFlag){
-                    SetupCounter = 300;
+                    SetupComplete = false;
                 }
                 SetupFlag = true;
                 return;
             }
         }
         SetupFlag = false;
+        SetupComplete = true;
     }
 
     public void gatterMain(){
@@ -90,12 +91,15 @@ public class Gatter {
                 makeOutputEvent(Output);
             }
         } else {
+            if (!SetupComplete){
+                SetupComplete = true;
+                getInputValues();
+                Output = calcOutput();
+                OutputSignal.forceSetValue(Output);
+            }
             getInputValues();
             Output = calcOutput();
-            if (SetupCounter > 0) {
-                SetupCounter--;
-                OutputSignal.setValue(Output);
-            }
+            OutputSignal.setValue(Output);
         }
     }
 }

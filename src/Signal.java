@@ -28,17 +28,6 @@ public class Signal {
         return postSignal;
     }
 
-    /*
-     * Wert wird aktualisiert
-     * Nachfolgende Nand-Gatter werden angeregt zu aktualisieren
-     * Handelt es sich um ein Output-Signal wird ein Konsolen-Output erzeugt
-     */
-
-    public void setValue(boolean SignalValue){
-        Value = SignalValue;
-        SignalProp();
-    }
-
     private boolean inSetup(){
         ArrayList<String> Methods = new ArrayList<String>();
         for (StackTraceElement e : Thread.currentThread().getStackTrace()){
@@ -52,20 +41,15 @@ public class Signal {
         return false;
     }
 
-    private void SignalProp(){
-        if (prevValue == null) {
-            for (Gatter g : postSignal) {
-                g.gatterMain();
-            }
-            prevValue = Value;
-            return;
-        }
-        if (prevValue != Value) {
-            for (Gatter g : postSignal) {
-                g.gatterMain();
-            }
-            prevValue = Value;
-        }
+    /*
+     * Wert wird aktualisiert
+     * Nachfolgende Nand-Gatter werden angeregt zu aktualisieren
+     * Handelt es sich um ein Output-Signal wird ein Konsolen-Output erzeugt
+     */
+
+    public void setValue(boolean SignalValue){
+        Value = SignalValue;
+        SignalProp();
     }
 
     public void setValue(boolean SignalValue, ArrayList<Event> Overlap){
@@ -77,6 +61,29 @@ public class Signal {
                 e.getSignal().setValueNoProp(e.getNewValue());
             }
             SignalProp();
+        }
+    }
+
+    public void forceSetValue(boolean SignalValue){
+        Value = SignalValue;
+        for (Gatter g : postSignal){
+            g.gatterMain();
+        }
+    }
+
+    private void SignalProp(){
+        if (prevValue == null) {
+            prevValue = Value;
+            for (Gatter g : postSignal) {
+                g.gatterMain();
+            }
+            return;
+        }
+        if (prevValue != Value) {
+            prevValue = Value;
+            for (Gatter g : postSignal) {
+                g.gatterMain();
+            }
         }
     }
 

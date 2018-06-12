@@ -74,3 +74,5 @@ Vielleicht eine Funktion einfügen, die überprüft, ob sämtliche Gatter einges
 dass der Feedbackloop gebrochen wird, da sonst nie alle Gatter erreicht werden.
 Man kann beim Einschwingen beachten, wie viele Gatter direkt vom ersten Signal betroffen sind, und dann darüber sicherstellen,
 dass alle angeregt werden. Vielleicht hierüber jedem eine Einschwingperiode einräumen.
+
+Die AND Blöcke über FF2 und FF3 müssen erst alle neuen Daten erhalten, bevor sie propagieren, auch im Setup.
