@@ -1,0 +1,35 @@
+*** Logic Simulator V1.0 ***
+
+CircuitDatei '_blume.cir' fertig eingelesen
+Schaltung enthält Rückkopplungen : Simulation mit maximal 5000 Gatterausführungen
+Schaltung erzeugt und initialisiert
+EventDatei   '_blume.events' fertig eingelesen
+Simulation fertig
+
+Zeit   warm troc sehr weni kein nich gies alar 
+
+0      0    0    0    0    0    1    0    0    
+50     1    0    0    0    0    1    0    0    
+100    1    1    0    0    0    1    0    0    
+117    1    1    0    0    0    1    1    0    
+250    1    0    0    0    0    1    1    0    
+300    0    0    0    0    0    1    1    0    
+550    0    1    0    0    0    1    1    0    
+561    0    1    0    0    0    1    0    0    
+600    0    1    1    0    0    1    0    0    
+612    0    1    1    0    0    1    1    0    
+700    0    1    0    0    0    1    1    0    
+750    0    0    0    0    0    1    1    0    
+800    0    0    0    1    0    1    1    0    
+880    0    0    0    1    0    0    1    0    
+881    0    0    0    1    0    1    1    0    
+900    0    0    0    1    1    1    1    0    
+912    0    0    0    1    1    1    1    1    
+1006   0    0    0    1    1    1    0    1    
+1020   0    0    0    1    0    0    0    1    
+1032   0    0    0    1    0    0    0    0    
+1040   0    0    0    1    0    1    0    0    
+1050   0    0    0    0    0    1    0    0    
+
+Programm beendet
+

@@ -1,0 +1,23 @@
+*** Logic Simulator V1.0 ***
+
+CircuitDatei 'beispiel-latch.cir' fertig eingelesen
+Schaltung erzeugt und initialisiert
+EventDatei   'beispiel-latch.events' fertig eingelesen
+Simulation fertig
+
+Zeit   d    c    q    
+
+0      0    0    0    
+10     1    0    0    
+50     1    1    0    
+61     1    1    1    
+70     0    1    1    
+90     1    1    1    
+100    1    0    1    
+150    1    1    1    
+200    1    0    1    
+250    1    1    1    
+300    1    0    1    
+
+Programm beendet
+

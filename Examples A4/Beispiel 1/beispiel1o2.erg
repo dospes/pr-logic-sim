@@ -1,0 +1,27 @@
+*** Logic Simulator V1.0 ***
+
+CircuitDatei 'beispiel1o2.cir' fertig eingelesen
+Schaltung erzeugt und initialisiert
+EventDatei   'beispiel1o.events' fertig eingelesen
+Simulation fertig
+
+Zeit   a    b    cin  s    cout i1   i2   i3   
+
+0      0    0    0    0    0    0    0    0    
+10     1    0    0    0    0    0    0    0    
+18     1    0    0    0    0    0    1    0    
+20     1    1    0    0    0    0    1    0    
+24     1    1    0    0    0    1    1    0    
+26     1    1    0    1    0    1    1    0    
+28     1    1    0    1    1    1    0    0    
+30     1    1    1    1    1    1    0    0    
+36     1    1    1    0    1    1    0    0    
+38     1    1    1    1    1    1    0    0    
+100    0    1    0    1    1    1    0    0    
+104    0    1    0    1    1    0    0    0    
+108    0    1    0    0    0    0    1    0    
+116    0    1    0    1    0    0    1    0    
+150    1    0    0    1    0    0    1    0    
+
+Programm beendet
+

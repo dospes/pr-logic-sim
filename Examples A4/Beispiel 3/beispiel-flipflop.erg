@@ -1,0 +1,50 @@
+*** Logic Simulator V1.0 ***
+
+CircuitDatei 'beispiel-flipflop.cir' fertig eingelesen
+Schaltung enthält Rückkopplungen : Simulation mit maximal 5000 Gatterausführungen
+Schaltung erzeugt und initialisiert
+EventDatei   'beispiel-flipflop.events' fertig eingelesen
+Simulation fertig
+
+Zeit   a    y0   y1   y2   
+
+0      0    0    0    0    
+100    1    0    0    0    
+106    1    0    1    0    
+150    0    0    1    0    
+200    1    0    1    0    
+206    1    0    0    1    
+250    0    0    0    1    
+300    1    0    0    1    
+306    1    1    0    0    
+350    0    1    0    0    
+400    1    1    0    0    
+406    1    1    1    0    
+450    0    1    1    0    
+500    1    1    1    0    
+506    1    1    0    1    
+550    0    1    0    1    
+600    1    1    0    1    
+606    1    1    1    1    
+650    0    1    1    1    
+700    1    1    1    1    
+706    1    0    0    0    
+750    0    0    0    0    
+800    1    0    0    0    
+806    1    0    1    0    
+850    0    0    1    0    
+900    1    0    1    0    
+906    1    0    0    1    
+950    0    0    0    1    
+1000   1    0    0    1    
+1006   1    1    0    0    
+1050   0    1    0    0    
+1100   1    1    0    0    
+1106   1    1    1    0    
+1150   0    1    1    0    
+1200   1    1    1    0    
+1206   1    1    0    1    
+1250   0    1    0    1    
+
+Programm beendet
+
